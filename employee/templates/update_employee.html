@@ -1,0 +1,218 @@
+{% extends 'base.html' %}
+  {%block pagetitle%}
+  <title>Jaguar | Update Employee</title>
+  {%endblock pagetitle%}
+{% block content %}
+
+<form method="POST">
+    {% csrf_token %}
+    <div class="card card-secondary ">
+        <div class="card-header">
+            <h1 class="card-title">Edit Employee</h1>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            <div class="row">
+                <div class="col-4">
+                    <label>Name</label>
+                    <input type="text" class="form-control" placeholder="Name" name="name" value="{{form.name.value}}">
+                </div>
+                <div class="col-4">
+                    <label>Code</label>
+                    <input type="number" class="form-control" placeholder="Code" name="code" value="{{form.code.value}}">
+
+                </div>
+                <div class="col-4">
+                    <label>National_ID</label>
+                    <input type="number" class="form-control" placeholder="National_ID" name="national_id" value="{{form.national_id.value}}">
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <label>Phone</label>
+                    <input type="number" class="form-control" placeholder="Phone" name="phone" value="{{form.phone.value}}">
+
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label>Brithday:</label>
+                        <div class="input-group date">
+                            <input type="date" name="brithday" class="form-control" value="{{form.brithday.value}}" />
+                            <div class="input-group-append">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label>Hire Date:</label>
+                        <div class="input-group date">
+                            <input type="date" name="hiredate" class="form-control" value="{{form.hiredate.value}}" />
+                            <div class="input-group-append">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <label>Goverment</label>
+                    <select class="custom-select" name="gov">
+
+                        <option {{form.gov}} </option>
+                    </select>
+                </div>
+
+                <div class="col-4">
+                    <label>City</label>
+                    <select class="custom-select" name="city">
+
+                        <option {{form.city}} </option>
+                    </select>
+                </div>
+
+                <div class="col-4">
+                    <label>Address</label>
+                    <input type="vLargeTextField" class="form-control" placeholder="Address" name="address" value="{{form.address.value}}">
+
+                </div>
+
+
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <label>Region</label>
+                    <select class="custom-select" name="region">
+
+                        <option {{form.region}} </option>
+                    </select>
+                </div>
+
+                <div class="col-4">
+                    <label>Gender</label>
+                    <select class="custom-select" name="gender">
+
+                        <option {{form.gender}} </option>
+                    </select>
+                </div>
+
+                <div class="col-4">
+                    <label>Marital Status</label>
+                    <select class="custom-select" name="maritalstatus">
+
+                        <option {{form.maritalstatus}} </option>
+                    </select>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <label>Military Status</label>
+                    <select class="custom-select" name="militarystatus">
+
+                        <option {{form.militarystatus}} </option>
+                    </select>
+                </div>
+                <div class="col-4">
+                    <label>Team</label>
+                    <select class="custom-select" name="team">
+
+                        <option {{form.team}} </option>
+                    </select>
+                </div>
+                <div class="col-4">
+                    <label>Email</label>
+                    <input type="email" class="form-control" placeholder="Email" name="email" value="{{form.email.value}}">
+
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <label>Education</label>
+                    <select class="custom-select" name="education">
+
+                        <option {{form.education}} </option>
+                    </select>
+                </div>
+
+                <div class="col-4">
+                    <label>College</label>
+                    <select class="custom-select" name="education">
+
+                        <option {{form.college}} </option>
+                    </select>
+                </div>
+
+                <div class="col-4">
+                    <label>Specialty</label>
+                    <select class="custom-select" name="education">
+
+                        <option {{form.specialty}} </option>
+                    </select>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <label>JobTitle</label>
+                    <select class="custom-select" name="jobtitle">
+
+                        <option {{form.jobtitle}} </option>
+                    </select>
+                </div>
+
+                <div class="col-4">
+                    <label>Payroll Policy</label>
+                    <select class="custom-select" name="payroll_policy">
+
+                        <option {{form.payroll_policy}} </option>
+                    </select>
+                </div>
+
+                <div class="col-4">
+                    <label>Cost Center</label>
+                    <select class="custom-select" name="costcenter">
+
+                        <option {{form.costcenter}} </option>
+                    </select>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <label>Bank</label>
+                    <select class="custom-select" name="bank">
+                        <option {{form.bank}} </option>
+                    </select>
+                </div>
+                <div class="col-4">
+                    <label>Bank Account</label>
+                    <input type="number" class="form-control" placeholder="Bank Account Number" name="bankaccount" value="{{form.bankaccount.value}}">
+                </div>
+                <br>    </br>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <div class="form-check">
+                        <input type="checkbox" name="stat" class="form-check-input" {% if form.stat.value %}checked{% endif%}>
+                        <label class="form-check-label">Active</label> <br></br>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Update</button>
+                        <a href="/employee" class="btn btn-secondary " type="button"> Cancel </a><br><br>
+
+                    </div>
+                </div>
+                <!-- /.card-body -->
+            </div>
+        </div>
+    </div>
+</form>
+    {% endblock content %}

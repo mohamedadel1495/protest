@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+  {%block pagetitle%}
+  <title>Jaguar | Delete Employee</title>
+  {%endblock pagetitle%}
+
+{% block content %}
+
+<form method="POST">
+ {% csrf_token %} {{form}}
+    <h1>هل تريد حذف الدرجة الموظف؟</h1>
+    <button type="submit" class="btn btn-block bg-gradient-danger btn-lg">Delete</button>
+    <a href="{%url 'show_employee'%}" type="button" class="btn btn-block bg-gradient-secondary btn-lg" >Close</a>
+</form>
+{% endblock content %}

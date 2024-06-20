@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form method="POST">
+ {% csrf_token %}
+    <div class="card card-secondary ">
+              <div class="card-header">
+                <h1 class="card-title">Add Gov</h1>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <form>
+                    <div class="form-group">
+    <label>No.</label>
+    <input type="number" class="form-control"  placeholder="No." name='no' >
+
+  </div>
+  <div class="form-group">
+    <label>Name</label>
+    <input type="text" class="form-control" placeholder="Name" name="name" >
+  </div>
+  <div class="form-check">
+    <input type="checkbox" class="form-check-input"  name="stat">
+    <label class="form-check-label">Active</label> <br></br>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+                      <a href="/gov" class="btn btn-secondary " type="button"  > Cancel </a><br><br>
+                </form>
+              </div>
+              <!-- /.card-body -->
+            </div>
+</form>
+
+
+
+
+
+
+{% endblock content %}
