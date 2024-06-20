@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<form method="POST">
+ {% csrf_token %}
+    <div class="card card-secondary ">
+              <div class="card-header">
+                <h1 class="card-title">Edit</h1>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <form>
+                    <div class="form-group">
+    <label>No.</label>
+    <input type="text" class="form-control"  name="no" placeholder="No." value="{{form.no.value}}">
+
+  </div>
+  <div class="form-group">
+    <label>Name</label>
+    <input type="text" class="form-control" name="name" placeholder="Name" value="{{form.name.value}}" >
+  </div>
+                                            <div class="form-group">
+                        <label>department</label>
+<select class="custom-select" name="department">
+
+                          <option {{form.department}}  </option>
+                        </select>
+                    </div>
+  <div class="form-check">
+    <input type="checkbox" name="stat" class="form-check-input" {% if form.stat.value %}checked{% endif %}>
+
+    <label class="form-check-label">Active</label> <br></br>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+                      <a href="/section" class="btn btn-secondary " type="button"  > Cancel </a><br><br>
+                </form>
+              </div>
+              <!-- /.card-body -->
+            </div>
+</form>
+{% endblock content %}
