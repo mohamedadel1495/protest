@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form method="POST">
+  {% csrf_token %}
+  <div class="card card-secondary ">
+    <div class="card-header">
+      <h1 class="card-title">Add User</h1>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+      <form>
+        <div class="row">
+          <div class="col-4">
+            <label>UserName</label>
+            <input type="text" class="form-control" placeholder="Username" name='username'>
+          </div>
+          <div class="col-4">
+            <label>Name</label>
+            <input type="text" class="form-control" placeholder="Name" name='first_name'>
+          </div>
+          <div class="col-4">
+            <label>Email</label>
+            <input type="email" class="form-control" placeholder="Email" name="email">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <label>Password</label>
+            <input type="password" class="form-control" placeholder="password" name='password'>
+          </div>
+          <div class="col-4">
+            <label>Confirm Password</label>
+            <input type="password" class="form-control" placeholder="Confirm Password" name="password1">
+          </div>
+        </div>
+        <br><br>
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <a href="/users" class="btn btn-secondary " type="button"> Cancel </a>
+      </form>
+    </div>
+    <!-- /.card-body -->
+  </div>
+</form>
+
+
+
+
+
+
+{% endblock content %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+            {%block title%}
+            <h1 class="m-0">Users Permission</h1>
+            {%endblock title%}
+
+
+
+{% block addbutton %}
+
+<div>
+<a href="#" class="btn btn-primary " > Add Permissions </a>
+
+</div>
+
+
+
+{% endblock addbutton %}
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Update Permissions</button>
+    </form>
+
+{% endblock content %}

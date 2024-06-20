@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{%block title%}
+<h1 class="m-0">Groups</h1>
+{%endblock title%}
+
+
+
+{% block addbutton %}
+
+
+{% endblock addbutton %}
+{% block content %}
+<form method="post">
+   {% csrf_token %}
+   <!-- /.card-header -->
+   <div class="card card-secondary ">
+
+      <div class="card-header">
+         <h1 class="card-title">Edit Name:</h1>
+      </div>
+      <!-- Group Name Input Field -->
+      <div class="card-body">
+         <div class="row">
+            <div class="col-4">
+               <input class="form-control" type="text" id="group_name" name="group_name" value="{{ group_name }}" required>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- Permissions Selection -->
+   {% for model, permissions in permissions_by_model.items %}
+   <div class="card card-secondary ">
+      <div class="card-header">
+         <h1 class="card-title">{{ model|title }}</h1>
+      </div>
+
+      <div class="card-body row ">
+         {% for permission in permissions %}
+         <div class="col-md-4">
+            <input type="checkbox" id="perm_{{ permission.id }}" name="permissions" value="{{ permission.id }}" {% if permission.id in group_permissions_ids %} checked {% endif %}>
+            <label for="perm_{{ permission.id }}">{{ permission.name }}</label>
+         </div>
+         {% endfor %}
+      </div>
+   </div>
+   {% endfor %}
+   </div>
+   <!-- /.card-body -->
+   <div class="col-4">
+      <div class="form-group">
+         <div>
+            <button type="submit" class="btn btn-primary " value="Update Group"> Save Group </button>
+         </div>
+         <a href="{%url 'group_list'%}" class="btn btn-secondary " type="button"> Cancel </a>
+      </div>
+   </div>
+   <br>
+   </div>
+
+
+</form>
+{% endblock content %}

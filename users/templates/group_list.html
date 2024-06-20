@@ -1,0 +1,43 @@
+
+{% extends 'base.html' %}
+            {%block title%}
+            <h1 class="m-0">Groups</h1>
+            {%endblock title%}
+
+
+
+{% block addbutton %}
+
+<div>
+<a href="{% url 'add_group' %}" class="btn btn-primary " > Add Group</a>
+</div>
+
+
+
+{% endblock addbutton %}
+{% block content %}
+<div class="card">
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                     <th>Name</th>
+                  </tr>
+               </thead>
+                  <tbody>
+               {% for i in groups %}
+               <tr>
+                     <td>{{i.name}}</td>
+                     <td> <a href="{%url 'edit_group' i.id%}" class="view" title="View" data-toggle="tooltip"><i class="fas fa-eye fa-lg" style="color: #0000FF;"></i></a>
+                            <a href="" class="delete" title="Delete" data-toggle="tooltip"><i class="fas fa-trash fa-lg" style="color: #FF0000;"></i></a>
+                          
+                          </td>
+                  </tr>
+                  {%endfor%}
+               </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+{% endblock content %}

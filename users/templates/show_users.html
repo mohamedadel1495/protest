@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+            {%block title%}
+            <h1 class="m-0">User</h1>
+            {%endblock title%}
+{% block addbutton %}
+<div>
+<a href="{% url 'add_user' %}" class="btn btn-primary " > Add User</a>
+</div>
+{% endblock addbutton %}
+{% block content %}
+<div class="card">
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                     <th>Username</th>
+                     <th>Name</th>
+                     <th>Email</th>
+                     <th>Join Date</th>
+                     <th>Last Login</th>
+                     <th>Action</th>
+                     <th>Select</th>
+                  </tr>
+               </thead>
+                  <tbody>
+               {% for i in users %}
+               <tr>
+                     <td>{{i.username}}</td>
+                     <td>{{i.frist_name}}</td>
+                     <td>{{i.email}}</td>
+                     <td>{{i.date_joined}}</td>
+                     <td>{{i.last_login}}</td>
+                     <td> <a href="#" class="view" title="View" data-toggle="tooltip"><i class="fas fa-eye fa-lg" style="color: #0000FF;"></i></a>
+                         <a href="{%url 'add_edit_user_permissions' i.id%}" class="edit" title="Edit" data-toggle="tooltip"><i class="far fa-edit fa-lg" style="color: #0000FF;"></i></a>
+                         <a href="{%url 'delete_user' i.id%}" class="delete" title="Delete" data-toggle="tooltip"><i class="fas fa-trash fa-lg" style="color: #FF0000;"></i></a></td>
+                         <td><input type='checkbox' name='{{ i.id }}' value='{{ i.name }}'></td>
+                  </tr>
+                  {%endfor%}
+               </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+{% endblock content %}

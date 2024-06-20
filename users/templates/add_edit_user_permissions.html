@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+            {%block title%}
+            <h1 class="m-0">Users {{user.username}}</h1>
+            {%endblock title%}
+
+{% block addbutton %}
+
+
+{% endblock addbutton %}
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    <div class="card">
+        <!-- ... Other form elements (e.g., username input) ... -->
+
+        <!-- Permissions Selection -->
+        {% for model, permissions in permissions_by_model.items %}
+        <div class="card card-secondary ">
+            <div class="card-header">
+               <h1 class="card-title">{{ model|title }}</h1>
+            </div>
+      
+            <div class="card-body row ">
+               {% for permission in permissions %}
+               <div class="col-md-4">
+                   <input type="checkbox" id="perm_{{ permission.id }}" name="permissions" value="{{ permission.id }}" 
+                          {% if permission.id in user_permissions_ids %} checked {% endif %}>
+                   <label for="perm_{{ permission.id }}">{{ permission.name }}</label>
+               </div>
+               {% endfor %}
+            </div>
+         </div>
+        {% endfor %}
+    </div>
+    <button type="submit" class="btn btn-primary " value="Update User"> Update User</button>
+    <a href="/users" class="btn btn-secondary " type="button"> Cancel </a>
+
+</form>
+{% endblock content %}
