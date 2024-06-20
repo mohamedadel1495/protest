@@ -1,0 +1,47 @@
+Certainly! To split the permission names using the pipe character (|), you can modify your template like this:
+
+<form method="post">
+   {% csrf_token %}
+   <div class="card">
+      <!-- /.card-header -->
+      <div class="card-body">
+         <!-- Group Name Input Field -->
+         <div class="row">
+            <div class="col-md-12">
+               <label for="group_name">Group Name:</label>
+               <input type="text" id="group_name" name="group_name" value="{{ group_name }}" required>
+            </div>
+         </div>
+
+         <!-- Permissions Selection -->
+         {% for model, permissions in permissions_by_model.items %}
+            <div class="row">
+               <div class="col-md-12">
+                  <strong>{{ model }}</strong>
+                  <div class="row">
+                     {% for permission in permissions %}
+                        <div class="col-md-4">
+                           {% with permission_names=permission.name.split("|") %}
+                              {% for perm_name in permission_names %}
+                                 <input type="checkbox" id="perm_{{ permission.id }}_{{ forloop.counter }}" name="permissions" value="{{ permission.id }}"
+                                    {% if permission.id in group_permissions_ids %} checked {% endif %}>
+                                 <label for="perm_{{ permission.id }}_{{ forloop.counter }}">{{ perm_name }}</label>
+                              {% endfor %}
+                           {% endwith %}
+                        </div>
+                     {% endfor %}
+                  </div>
+               </div>
+            </div>
+         {% endfor %}
+      </div>
+      <!-- /.card-body -->
+   </div>
+   <input type="submit" value="Update Group">
+</form>
+
+In this modified template:
+
+I use the {% with permission_names=permission.name.split("|") %} tag to split the permission names by the pipe character (|).
+Then, I iterate over each split permission name and create checkboxes and labels accordingly.
+Make sure to adjust the HTML structure and styling as needed for your specific layout. Let me know if you have any further questions or need additional assistance!
